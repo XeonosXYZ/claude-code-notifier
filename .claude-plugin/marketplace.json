@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "claude-code-notifier",
-      "source": ".",
+      "source": "./",
       "description": "Cross-platform desktop notifications for Claude Code with i18n support, custom icons, and click-to-focus terminal functionality."
     }
   ]
