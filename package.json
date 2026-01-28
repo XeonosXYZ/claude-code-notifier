@@ -6,8 +6,8 @@
   "scripts": {
     "postinstall": "echo 'claude-code-notifier installed successfully!'"
   },
-  "dependencies": {
-    "node-notifier": "^10.0.1"
+  "peerDependencies": {
+    "node-notifier": ">=10.0.0"
   },
   "engines": {
     "node": ">=18.0.0"

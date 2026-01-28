@@ -14,6 +14,14 @@ Cross-platform desktop notifications for Claude Code with i18n support, custom i
 
 ## Installation
 
+### Prerequisites
+
+Install node-notifier globally (one-time setup):
+
+```bash
+npm install -g node-notifier
+```
+
 ### Via Claude Code Plugin System (Recommended)
 
 ```bash
@@ -22,9 +30,6 @@ Cross-platform desktop notifications for Claude Code with i18n support, custom i
 
 # Install plugin
 /plugin install claude-code-notifier@claude-code-notifier
-
-# Install dependencies (cross-platform)
-node ~/.claude/plugins/cache/claude-code-notifier/claude-code-notifier/*/install.mjs
 ```
 
 ### Manual Installation
@@ -35,12 +40,7 @@ node ~/.claude/plugins/cache/claude-code-notifier/claude-code-notifier/*/install
    cd claude-code-notifier
    ```
 
-2. Install dependencies (cross-platform):
-   ```bash
-   node install.mjs
-   ```
-
-3. Link to Claude Code plugins directory:
+2. Link to Claude Code plugins directory:
    ```bash
    # Linux/macOS
    ln -s $(pwd) ~/.claude/plugins/marketplaces/claude-code-notifier

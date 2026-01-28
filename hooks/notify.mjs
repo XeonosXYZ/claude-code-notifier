@@ -13,7 +13,9 @@
  *   node notify.mjs permission-request
  */
 
-import notifier from 'node-notifier';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const notifier = require('node-notifier');
 import { readFileSync, writeFileSync, unlinkSync, existsSync, mkdirSync } from 'fs';
 import { tmpdir, platform } from 'os';
 import { join, dirname } from 'path';
