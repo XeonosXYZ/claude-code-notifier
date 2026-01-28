@@ -217,6 +217,31 @@ async function readStdin() {
 }
 
 // ============================================================================
+// Sound
+// ============================================================================
+
+function playSound(type = 'complete') {
+  const os = platform();
+
+  try {
+    if (os === 'linux') {
+      const sound = type === 'complete'
+        ? '/usr/share/sounds/freedesktop/stereo/complete.oga'
+        : '/usr/share/sounds/freedesktop/stereo/message.oga';
+      spawn('paplay', [sound], { detached: true, stdio: 'ignore' }).unref();
+    } else if (os === 'darwin') {
+      const sound = type === 'complete' ? 'Glass' : 'Ping';
+      spawn('afplay', [`/System/Library/Sounds/${sound}.aiff`], { detached: true, stdio: 'ignore' }).unref();
+    } else if (os === 'win32') {
+      const sound = type === 'complete' ? 'SystemAsterisk' : 'SystemExclamation';
+      spawn('powershell', ['-Command', `[System.Media.SystemSounds]::${sound}.Play()`], { detached: true, stdio: 'ignore' }).unref();
+    }
+  } catch {
+    // Silently fail if sound fails
+  }
+}
+
+// ============================================================================
 // Notification
 // ============================================================================
 
@@ -228,7 +253,7 @@ function notify(title, message, options = {}) {
   const notifyOptions = {
     title,
     message,
-    sound: true,
+    sound: false, // We handle sound manually for cross-platform support
     wait: options.wait ?? true,
     timeout: options.timeout ?? 10,
   };
@@ -256,6 +281,9 @@ function notify(title, message, options = {}) {
       }
     }
   );
+
+  // Play sound manually
+  playSound(options.soundType || 'complete');
 }
 
 // ============================================================================
@@ -350,7 +378,7 @@ async function permissionRequest() {
     ? `${t('permissionRequest')}: ${toolName}\n${shortDetail}...`
     : `${t('permissionRequest')}: ${toolName}`;
 
-  notify(CONFIG.appName, message, { windowId, timeout: 30 });
+  notify(CONFIG.appName, message, { windowId, timeout: 30, soundType: 'message' });
 }
 
 // ============================================================================
