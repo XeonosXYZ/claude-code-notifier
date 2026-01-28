@@ -1,0 +1,12 @@
+{
+  "name": "claude-code-notifier",
+  "version": "1.0.0",
+  "description": "Cross-platform desktop notifications for Claude Code with i18n support, custom icons, and click-to-focus terminal functionality. Easy installation via Claude Code plugin system.",
+  "author": {
+    "name": "Xeonos",
+    "url": "https://github.com/XeonosXYZ"
+  },
+  "repository": "https://github.com/XeonosXYZ/claude-code-notifier",
+  "license": "MIT",
+  "keywords": ["notifications", "desktop", "i18n", "cross-platform", "claude-code"]
+}

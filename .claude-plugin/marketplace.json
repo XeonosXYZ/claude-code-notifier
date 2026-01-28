@@ -1,0 +1,17 @@
+{
+  "name": "claude-code-notifier",
+  "owner": {
+    "name": "Xeonos",
+    "email": "xeonos@example.com"
+  },
+  "metadata": {
+    "description": "Cross-platform desktop notifications for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "claude-code-notifier",
+      "source": ".",
+      "description": "Cross-platform desktop notifications for Claude Code with i18n support, custom icons, and click-to-focus terminal functionality."
+    }
+  ]
+}
