@@ -217,17 +217,31 @@ async function readStdin() {
 
 function notify(title, message, options = {}) {
   const iconPath = existsSync(CONFIG.iconPath) ? CONFIG.iconPath : undefined;
+  const os = platform();
+
+  // Build notification options (macOS uses contentImage, others use icon)
+  const notifyOptions = {
+    title,
+    message,
+    sound: true,
+    wait: options.wait ?? true,
+    timeout: options.timeout ?? 10,
+  };
+
+  if (iconPath) {
+    if (os === 'darwin') {
+      notifyOptions.contentImage = iconPath;
+    } else {
+      notifyOptions.icon = iconPath;
+    }
+  }
+
+  if (os === 'win32') {
+    notifyOptions.appID = CONFIG.appName;
+  }
 
   notifier.notify(
-    {
-      title,
-      message,
-      icon: iconPath,
-      sound: true,
-      wait: options.wait ?? true,
-      timeout: options.timeout ?? 10,
-      appID: CONFIG.appName,
-    },
+    notifyOptions,
     (_err, response, metadata) => {
       // Handle click event
       if (response === 'activate' || response === 'clicked' || metadata?.activationType === 'contentsClicked') {
