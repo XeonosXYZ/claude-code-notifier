@@ -2,7 +2,7 @@
   "name": "claude-code-notifier",
   "owner": {
     "name": "Xeonos",
-    "email": "xeonos@example.com"
+    "email": "xeonos@xeonos.xyz"
   },
   "metadata": {
     "description": "Cross-platform desktop notifications for Claude Code"
