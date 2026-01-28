@@ -14,13 +14,16 @@
  */
 
 import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-const notifier = require('node-notifier');
 import { readFileSync, writeFileSync, unlinkSync, existsSync, mkdirSync } from 'fs';
 import { tmpdir, platform } from 'os';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { spawn, execSync } from 'child_process';
+
+// Get global node_modules path and load node-notifier
+const globalNodeModules = execSync('npm root -g', { encoding: 'utf-8' }).trim();
+const requireGlobal = createRequire(join(globalNodeModules, 'node-notifier', 'package.json'));
+const notifier = requireGlobal('node-notifier');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

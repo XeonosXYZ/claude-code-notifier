@@ -1,6 +1,6 @@
 {
   "name": "claude-code-notifier",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Cross-platform desktop notifications for Claude Code with i18n support, custom icons, and click-to-focus terminal functionality. Easy installation via Claude Code plugin system.",
   "author": {
     "name": "Xeonos",
