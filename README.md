@@ -2,6 +2,12 @@
 
 Cross-platform desktop notifications for Claude Code with i18n support, custom icons, and click-to-focus terminal functionality. Easy installation via Claude Code plugin system.
 
+## Screenshots
+
+| Linux | macOS |
+|-------|-------|
+| ![Linux](assets/screenshot-linux.png) | ![macOS](assets/screenshot-apple.png) |
+
 ## Features
 
 - **Cross-platform**: Works on Linux, macOS, and Windows
